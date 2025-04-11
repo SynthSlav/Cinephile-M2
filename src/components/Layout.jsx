@@ -1,21 +1,24 @@
 import {Outlet, Link} from "react-router-dom";
-import { Navbar, Container, Nav, NavLink } from "react-bootstrap";
+import { Stack, Navbar, Container, Nav, NavLink } from "react-bootstrap";
 
-const Layout = () => {
+export default function Layout() {
     return(
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Stack className="mt-3">
+        <Navbar expand="lg" sticky="top" className="py-0 container-fluid navbar-container">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">CinePhile</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+            <Nav className="ms-auto">
+              <Nav.Link  as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/watchlist">Watchlist</Nav.Link>
+              <Nav.Link as={Link} to="/about">About</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Outlet />
+      </Stack>
     )
 }
 
-export default Layout;

@@ -1,0 +1,27 @@
+/* Google Fonts Imports */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+/* CSS Variables */
+:root {
+    --primary-font: 'Merriweather Sans', sans-serif;
+    --secondary-font: 'Source Sans 3', sans-serif;
+    --primary-color: #031c31;
+    --primary-color2: #3b9fff;
+    --secondary-color: #f6f8fa;
+    --secondary-color2: #fab795;
+}
+/* Global Styles */
+
+body, html #root{
+  background-color: var(--primary-color);
+  padding: 0;
+  font-family: var(--primary-font)
+}
+
+.navbar-container *{
+  max-width: 100%;
+  background-color: var(--primary-color);
+  color: var(--secondary-color2);
+}
+
