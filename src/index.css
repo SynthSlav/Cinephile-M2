@@ -25,3 +25,25 @@ body, html #root{
   color: var(--secondary-color2);
 }
 
+.nav-link {
+  text-decoration: none;
+  color: #fab795;
+  transition: color 0.3s, background-color 0.3s ease;
+  font-weight: normal;
+  margin: 0 0.2rem;
+}
+
+.nav-link.hover {
+  color: #031c31;
+  background-color: #fab795;
+  transform: scale(1.1);
+  font-weight: bold;
+  border-radius: 5%;
+}
+
+.nav-link.active {
+  color: #031c31;
+  background-color: #fab795;
+  font-weight: bold;
+  border-radius: 5%;
+}
