@@ -31,6 +31,7 @@ body, html #root{
   transition: color 0.3s, background-color 0.3s ease;
   font-weight: normal;
   margin: 0 0.2rem;
+  border-radius: 5%;
 }
 
 .nav-link.hover {
