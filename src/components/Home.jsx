@@ -1,13 +1,27 @@
 import { useState } from "react"
 import { Form, Button, Alert, Spinner, Row, Col } from "react-bootstrap"
+import MovieCard from "./MovieCard"
+import MovieCardDetail from "./MovieCardDetail"
 
-export default function Main({movies, loading, error, onSearch}) {
+export default function Main({movies, loading, error, onSearch, selectedMovie, fetchMovieDetails, detailLoading, onBackToList}) {
     const [searchTerm, setSearchTerm] = useState('')
 
-    const handleSearch = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         onSearch(searchTerm);
     };
+
+    if (selectedMovie) {
+        return (
+            <div className="container mt-4">
+            <MovieCardDetail 
+                movie={selectedMovie}
+                onBack={onBackToList}
+                detailLoading={detailLoading}
+            />
+            </div>
+        )
+    }
 
     return (
         <div className="home-container">
@@ -56,7 +70,12 @@ export default function Main({movies, loading, error, onSearch}) {
             <Row xs={1} md={2} lg={3} xl={4} className="g-4">
                 {movies.map((movie) =>(
                     <Col key={movie.imdbID}>
-                        
+                        <MovieCard 
+                            movie={movie} 
+                            onClick={() => fetchMovieDetails(movie.imdbID)} 
+                            onAddToWatchlist={(movie) => console.log(`Added ${movie.Title} to watchlist`)}
+
+                        />
                     </Col>
                 ))}                
             </Row>
