@@ -35,9 +35,9 @@ export default function MovieCardDetail({ movie, onBack, detailLoading }) {
                         </div>
 
                         <Card.Text className='mb-4'>
-                            <strong>Director: {movie.Director}</strong>
-                            <strong>Cast: {movie.Actors}</strong>
-                            <strong>Plot: {movie.Plot}</strong>
+                            <div><strong>Director: {movie.Director}</strong></div>
+                            <div><strong>Cast: {movie.Actors}</strong></div>
+                            <div><strong>Plot: {movie.Plot}</strong></div>
                         </Card.Text>
 
                         {movie.imdbRating && (

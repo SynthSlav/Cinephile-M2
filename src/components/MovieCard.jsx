@@ -19,7 +19,10 @@ export default function MovieCard({movie, onClick, onAddToWatchlist}) {
                     variant='outline-primary'
                     className='mt-auto align-self-first'
                     size='sm'
-                    onClick={() => onAddToWatchlist(movie)}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onAddToWatchlist(movie);
+                      }}
                 >
                     Add to Watchlist
                 </Button>

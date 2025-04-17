@@ -1,4 +1,4 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './components/Home'
@@ -11,13 +11,20 @@ export default function App() {
   // States for the Api calls
   const apiKey = import.meta.env.VITE_OMDB_API_KEY;
   const [movies, setMovies] = useState([]);
-  const [watchlist, setWatchlist] = useState([]);
+  const [watchlist, setWatchlist] = useState(() => {
+    const saved = localStorage.getItem('watchlist');
+    return saved ? JSON.parse(saved) : { toWatch: [], watched: [] };
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
 
+  useEffect(() => {
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+  }, [watchlist]);
+  
   const searchMovies = async (searchTerm) => {
     setSelectedMovie(null);
     if (!searchTerm) {
@@ -62,6 +69,32 @@ export default function App() {
     }
   }
 
+  const addToWatchlist = (movie) => {
+    setWatchlist(prev => ({
+      ...prev,
+      toWatch: prev.toWatch.some(m => m.imdbID === movie.imdbID) 
+        ? prev.toWatch 
+        : [...prev.toWatch, movie]
+    }));
+  };
+  
+  const markAsWatched = (imdbID) => {
+    setWatchlist(prev => {
+      const movie = prev.toWatch.find(m => m.imdbID === imdbID);
+      return {
+        toWatch: prev.toWatch.filter(m => m.imdbID !== imdbID),
+        watched: movie ? [...prev.watched, movie] : prev.watched
+      };
+    });
+  };
+
+  const removeFromWatchlist = (imdbID) => {
+    setWatchlist(prev => ({
+      toWatch: prev.toWatch.filter(m => m.imdbID !== imdbID),
+      watched: prev.watched.filter(m => m.imdbID !== imdbID)
+    }));
+  };
+
   return (
     // Router for the pages
     <>
@@ -78,8 +111,13 @@ export default function App() {
             setSelectedMovie={setSelectedMovie}
             detailLoading={detailLoading}
             onBackToList={() => setSelectedMovie(null)}
+            onAddToWatchlist={addToWatchlist}
             />} />
-            <Route path='watchlist' element={<Watchlist />} />
+            <Route path='watchlist' element={<Watchlist
+              watchlist={watchlist}
+              onRemove={removeFromWatchlist}
+              onMarkWatched={markAsWatched}
+            />} />
             <Route path='about' element={<About />} />
           </Route>
         </Routes>

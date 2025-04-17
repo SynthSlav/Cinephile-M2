@@ -3,7 +3,7 @@ import { Form, Button, Alert, Spinner, Row, Col } from "react-bootstrap"
 import MovieCard from "./MovieCard"
 import MovieCardDetail from "./MovieCardDetail"
 
-export default function Main({movies, loading, error, onSearch, selectedMovie, fetchMovieDetails, detailLoading, onBackToList}) {
+export default function Main({movies, loading, error, onSearch, selectedMovie, fetchMovieDetails, detailLoading, onBackToList, onAddToWatchlist}) {
     const [searchTerm, setSearchTerm] = useState('')
 
     const handleSubmit = (e) => {
@@ -73,7 +73,7 @@ export default function Main({movies, loading, error, onSearch, selectedMovie, f
                         <MovieCard 
                             movie={movie} 
                             onClick={() => fetchMovieDetails(movie.imdbID)} 
-                            onAddToWatchlist={(movie) => console.log(`Added ${movie.Title} to watchlist`)}
+                            onAddToWatchlist={onAddToWatchlist}
 
                         />
                     </Col>
