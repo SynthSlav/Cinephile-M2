@@ -16,13 +16,15 @@
 body, html #root{
   background-color: var(--primary-color);
   padding: 0;
-  font-family: var(--primary-font)
+  font-family: var(--primary-font);
+  color: var(--secondary-color)
 }
 
 .navbar-container *{
   max-width: 100%;
   background-color: var(--primary-color);
   color: var(--secondary-color2);
+  padding: 0.3rem 0;
 }
 
 .nav-link {
@@ -30,7 +32,7 @@ body, html #root{
   color: #fab795;
   transition: color 0.3s, background-color 0.3s ease;
   font-weight: normal;
-  margin: 0 0.2rem;
+  margin: 0 0.5rem;
   border-radius: 5%;
 }
 
@@ -47,4 +49,42 @@ body, html #root{
   background-color: #fab795;
   font-weight: bold;
   border-radius: 5%;
+}
+
+/* Home Styles */
+
+.search-button{
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color2);
+  color: var(--secondary-color2);
+}
+
+.search-button:disabled {
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color2);
+  color: var(--secondary-color2);
+}
+
+.search-button.hover:not(:disabled) {
+  background-color: var(--secondary-color2);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+/* Home/Search Results styling */
+
+.card-style {
+  background-color: var(--secondary-color2);
+  color: var(--primary-color);
+  word-break: break-word;
+  max-height: 560px;
+}
+
+.card-hover {
+  scale: 1.05;
+  transition: 0.3s ease;
+  white-space: pre-wrap;        
+  word-break: break-word;     
+  text-overflow: unset;       
+  overflow: visible;
 }

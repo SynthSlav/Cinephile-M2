@@ -15,9 +15,9 @@ export default function Layout() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <NavLinkStyle  to="/">Home</NavLinkStyle>
-              <NavLinkStyle  to="/watchlist">Watchlist</NavLinkStyle>
-              <NavLinkStyle  to="/about">About</NavLinkStyle>
+              <NavLinkStyle as={Link} className="" to="/">Home</NavLinkStyle>
+              <NavLinkStyle as={Link} className="" to="/watchlist">Watchlist</NavLinkStyle>
+              <NavLinkStyle as={Link} className="" to="/about">About</NavLinkStyle>
             </Nav>
           </Navbar.Collapse>
         </Container>
