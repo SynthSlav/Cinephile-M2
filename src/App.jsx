@@ -37,7 +37,7 @@ export default function App() {
 
     try {
       const response = await axios.get(
-        `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&s=${searchTerm}`
+        `https://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}`
       );
 
       if (response.data.Response === 'True') {
@@ -59,7 +59,7 @@ export default function App() {
 
     try {
       const response = await axios.get(
-        `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_OMDB_API_KEY}&i=${imdbID}`
+        `https://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}&plot=full`
       );
       setSelectedMovie(response.data);
     } catch (error) {

@@ -42,7 +42,7 @@ const WatchlistSection = ({ movies, onRemove, onAction, actionText }) => (
             <Card.Title>{movie.Title}</Card.Title>
             <div className="d-flex gap-2">
               <Button variant="danger" size="sm" onClick={() => onRemove(movie.imdbID)}>
-                Remove
+                Remove from Watchlist
               </Button>
               {onAction && (
                 <Button variant="success" size="sm" onClick={() => onAction(movie.imdbID)}>

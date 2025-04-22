@@ -81,10 +81,46 @@ body, html #root{
 }
 
 .card-hover {
-  scale: 1.05;
+  scale: 1.02;
   transition: 0.3s ease;
   white-space: pre-wrap;        
   word-break: break-word;     
   text-overflow: unset;       
   overflow: visible;
+}
+
+.cine-btn {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color2);
+  transition: background-color 0.3s, color 0.3s ease;
+}
+
+.cine-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color2);
+  transition: background-color 0.3s, color 0.3s ease;
+}
+
+.card-title {
+  max-height: 1.2em;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.card-hover .card-title {
+  white-space: normal;
+  max-height: 5em;
+}
+
+
+/* Media Queries */
+
+@media screen and (min-width: 576px) and  (max-width: 768px) {
+    .mov-card {
+      max-width: 300px;
+    }
 }

@@ -12,11 +12,15 @@ export default function MovieCard({movie, onClick, onAddToWatchlist}) {
     e.currentTarget.querySelector('.card-title').classList.add("text-truncate");
   };
 
+  const handleCardButtonEnter = (e) => {
+    e.currentTarget.classList.add("cine-btn:hover");
+  };
+
     return (
         <Card
-            className='h-100 shadow-sm card-style'
+            className='h-100 shadow-sm card-style mov-card'
             onClick={() => onClick(movie.imdbID)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer',  width: '100%', maxWidth: '320px' }}
             onMouseEnter={handleMouseCardEnter}
             onMouseLeave={handleMouseCardLeave}
         >
@@ -24,9 +28,10 @@ export default function MovieCard({movie, onClick, onAddToWatchlist}) {
                 variant='top'
                 src={movie.Poster !== "N/A" ? movie.Poster : `Image for ${movie.Title} not available`}
                 alt={`${movie.Title} poster`}
+                style={{ objectFit: 'contain', height: '100%', width: '100%', maxHeight: '300px', objectPosition: 'center' }}
             />
             <Card.Body>
-            <Card.Title className="text-truncate">
+            <Card.Title >
           <OverlayTrigger
             placement="top"
             overlay={
@@ -40,13 +45,13 @@ export default function MovieCard({movie, onClick, onAddToWatchlist}) {
         </Card.Title>
                 <Card.Subtitle className='mb-2 text-muted'>Year: {movie.Year}</Card.Subtitle>
                 <Button
-                    variant='outline-primary'
-                    className='mt-auto align-self-first'
+                    className='mt-auto align-self-first cine-btn'
                     size='sm'
                     onClick={(e) => {
                         e.stopPropagation();
                         onAddToWatchlist(movie);
                       }}
+                    onMouseEnter={handleCardButtonEnter}
                 >
                     Add to Watchlist
                 </Button>
