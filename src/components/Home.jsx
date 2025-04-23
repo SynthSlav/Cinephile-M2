@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Form, Button, Alert, Spinner, Row, Col } from "react-bootstrap";
 import MovieCard from "./MovieCard";
 import MovieCardDetail from "./MovieCardDetail";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./transitions.css";
+import PageLoad from "./PageLoadAnimation";
 
 export default function Main({
   movies,
@@ -36,7 +37,9 @@ export default function Main({
     fetchMovieDetails(id);
   };
 
+
   return (
+    <PageLoad>
     <div className="home-container">
       <h1 className="my-4">Welcome to Cinephile</h1>
       <h3>A platform specifically designed for addicts of the Big Screen</h3>
@@ -124,5 +127,6 @@ export default function Main({
         </CSSTransition>
       </SwitchTransition>
     </div>
+    </PageLoad>
   );
 }

@@ -24,7 +24,7 @@ export default function MovieCardDetail({ movie, onBack, detailLoading }) {
                 </Col>
                 <Col md={7}>
                     <Card.Body className='p-4'>
-                        <Card.Title as="h2">{movie.Title} <small>( {movie.Year} )</small></Card.Title>
+                        <Card.Title style={{padding: '5rem'}} as="h2">{movie.Title} <small>( {movie.Year} )</small></Card.Title>
 
                         <div className='mb-3'>
                             <Badge bg="secondary" className='me-2'>Type: {movie.Type}</Badge>
@@ -34,11 +34,11 @@ export default function MovieCardDetail({ movie, onBack, detailLoading }) {
                             ))}</Badge>
                         </div>
 
-                        <Card.Text className='mb-4'>
-                            <div><strong>Director: {movie.Director}</strong></div>
-                            <div><strong>Cast: {movie.Actors}</strong></div>
-                            <div><strong>Plot: {movie.Plot}</strong></div>
-                        </Card.Text>
+                        <Row className='my-4'>
+                            <div className='cbody-info'><strong>Director: {movie.Director}</strong></div>
+                            <div className='cbody-info'><strong>Cast: {movie.Actors}</strong></div>
+                            <div className='cbody-info'><strong>Plot: {movie.Plot}</strong></div>
+                        </Row>
 
                         {movie.imdbRating && (
                             <Badge bg='warning' text='dark' className='fs-6'>

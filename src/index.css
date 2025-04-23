@@ -20,6 +20,26 @@ body, html #root{
   color: var(--secondary-color)
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.page-transition {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.page-transition.entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .navbar-container *{
   max-width: 100%;
   background-color: var(--primary-color);
@@ -116,6 +136,11 @@ body, html #root{
   max-height: 5em;
 }
 
+/* Movie Detailed Card styles */
+
+.cbody-info {
+  padding: 0.2rem 0;
+}
 
 /* Media Queries */
 
