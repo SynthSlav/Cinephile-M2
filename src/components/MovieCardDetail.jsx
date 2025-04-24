@@ -6,7 +6,7 @@ export default function MovieCardDetail({ movie, onBack, detailLoading }) {
     }
 
     return (
-        <Card className='mb-4 shadow-lg'>
+        <Card className='mb-4 shadow-md card-deets'>
             <Button
                 variant='light'
                 onClick={onBack}
@@ -37,6 +37,7 @@ export default function MovieCardDetail({ movie, onBack, detailLoading }) {
                         <Row className='my-4'>
                             <div className='cbody-info'><strong>Director: {movie.Director}</strong></div>
                             <div className='cbody-info'><strong>Cast: {movie.Actors}</strong></div>
+                            <div className='cbody-info'><strong>Awards: {movie.Awards}</strong></div>
                             <div className='cbody-info'><strong>Plot: {movie.Plot}</strong></div>
                         </Row>
 

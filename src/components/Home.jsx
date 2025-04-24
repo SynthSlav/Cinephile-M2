@@ -47,7 +47,7 @@ export default function Main({
 
       <Form onSubmit={handleSubmit} className="mb-4">
         <Form.Group controlId="searchForm">
-          <Row className="text-center">
+          <Row className="text-center gx-0">
             <Col md={8} sm={6} xs={6} className="p-4">
               <Form.Control
                 type="text"

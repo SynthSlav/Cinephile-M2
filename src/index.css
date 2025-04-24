@@ -17,7 +17,8 @@ body, html #root{
   background-color: var(--primary-color);
   padding: 0;
   font-family: var(--primary-font);
-  color: var(--secondary-color)
+  color: var(--secondary-color);
+  overflow-x: hidden;
 }
 
 @keyframes fadeIn {
@@ -39,6 +40,12 @@ body, html #root{
   opacity: 1;
   transform: translateY(0);
 }
+
+/* * {
+  outline: 1px solid red;
+} */
+
+/* Layout Styles */
 
 .navbar-container *{
   max-width: 100%;
@@ -139,7 +146,13 @@ body, html #root{
 /* Movie Detailed Card styles */
 
 .cbody-info {
-  padding: 0.2rem 0;
+  padding: 0.4rem 0;
+}
+
+.card-deets {
+  background-color: var(--secondary-color2);
+  color: var(--primary-color);
+  word-break: break-word;
 }
 
 /* Media Queries */
