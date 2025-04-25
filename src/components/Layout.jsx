@@ -3,8 +3,8 @@ import { Stack, Navbar, Container, Nav, NavLink } from "react-bootstrap";
 import NavLinkStyle from "./NavLinkStyle";
 
 export default function Layout() {
-
-    // Attempt at useState for hovered and active links
+    // This component serves as the layout for the application, providing a consistent navigation bar across different pages.
+    // It uses React Router's Outlet to render the child components based on the current route.
 
 
     return(
