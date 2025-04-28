@@ -39,7 +39,6 @@ export default function Main({
 
 
   return (
-    <PageLoad>
     <div className="home-container">
       <h1 className="my-4">Welcome to Cinephile</h1>
       <h3>A platform specifically designed for addicts of the Big Screen</h3>
@@ -127,6 +126,5 @@ export default function Main({
         </CSSTransition>
       </SwitchTransition>
     </div>
-    </PageLoad>
   );
 }

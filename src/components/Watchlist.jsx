@@ -1,107 +1,115 @@
-import { useState } from 'react';
-import { Tab, Tabs, Card, Button, Row, Col } from 'react-bootstrap';
-import MovieCardDetail from './MovieCardDetail'; // Adjust path as needed
+import { useState, useRef } from "react";
+import { Tab, Tabs } from "react-bootstrap";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
+import WatchlistSection from "./WatchlistSection";
+import MovieCardDetail from "./MovieCardDetail";
+import "./transitions.css";
+import { AnimatePresence, motion } from "framer-motion";
 
-export default function Watchlist({ 
-  watchlist, 
-  onRemove, 
+export default function Watchlist({
+  watchlist,
+  onRemove,
   onMarkWatched,
   fetchMovieDetails,
   selectedMovie,
   onBackToList,
-  detailLoading
+  detailLoading,
 }) {
-  const [activeTab, setActiveTab] = useState('toWatch');
+  const [activeTab, setActiveTab] = useState("toWatch");
+
+  // const listRef = useRef(null);
+  // const detailRef = useRef(null);
 
   const handleMovieClick = (id) => {
     fetchMovieDetails(id);
   };
 
-  if (selectedMovie) {
-    return (
-      <div className="container mt-4">
-        <MovieCardDetail
-          movie={selectedMovie}
-          onBack={onBackToList}
-          detailLoading={detailLoading}
-        />
-      </div>
-    );
-  }
-
   return (
     <div className="watchlist-container">
       <h2 className="mb-4">My Watchlist</h2>
-      
-      <Tabs activeKey={activeTab} onSelect={t => setActiveTab(t)} className="mb-4 justify-content-center" style={{ gap: "2rem" }}>
-        <Tab eventKey="toWatch" title={<span style={{ fontSize: '1.1rem', padding: '0.5rem 1rem' }}>To Watch ({watchlist.toWatch.length})</span>}>
-          <WatchlistSection 
-            movies={watchlist.toWatch}
-            onRemove={onRemove}
-            onAction={onMarkWatched}
-            actionText="Mark as Watched"
-            onMovieClick={handleMovieClick}
-          />
-        </Tab>
-        <Tab eventKey="watched" title={<span style={{ fontSize: '1.1rem', padding: '0.5rem 1rem' }}>Watched ({watchlist.watched.length})</span>}>
-          <WatchlistSection 
-            movies={watchlist.watched}
-            onRemove={onRemove}
-            actionText="Remove"
-            onMovieClick={handleMovieClick}
-          />
-        </Tab>
-      </Tabs>
+
+      <AnimatePresence mode="wait">
+        {selectedMovie ? (
+          <motion.div
+            key={selectedMovie.imdbID}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{
+              duration: 0.3,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+            className="container mt-4"
+            style={{ overflowX: "hidden" }}
+          >
+            <MovieCardDetail
+              movie={selectedMovie}
+              onBack={onBackToList}
+              detailLoading={detailLoading}
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="watchlist"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 0.3,
+              ease: [0.25, 0.1, 0.25, 1]
+            }}
+            style={{ overflowX: "hidden" }}
+          >
+            <Tabs
+              activeKey={activeTab}
+              onSelect={(t) => setActiveTab(t)}
+              className="mb-4 justify-content-center"
+            >
+              <Tab eventKey="toWatch" title={`To Watch (${watchlist.toWatch.length})`}>
+                <AnimatePresence mode="wait">
+                  {activeTab === "toWatch" && (
+                    <motion.div
+                      key="toWatch"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <WatchlistSection
+                        movies={watchlist.toWatch}
+                        onRemove={onRemove}
+                        onAction={onMarkWatched}
+                        actionText="Mark as Watched"
+                        onMovieClick={handleMovieClick}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Tab>
+              <Tab eventKey="watched" title={`Watched (${watchlist.watched.length})`}>
+                <AnimatePresence mode="wait">
+                  {activeTab === "watched" && (
+                    <motion.div
+                      key="watched"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <WatchlistSection
+                        movies={watchlist.watched}
+                        onRemove={onRemove}
+                        actionText="Remove"
+                        onMovieClick={handleMovieClick}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Tab>
+            </Tabs>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
-
-const WatchlistSection = ({ movies, onRemove, onAction, actionText, onMovieClick }) => (
-  <Row xs={1} md={2} lg={3} xl={4} className="g-4">
-    {movies.map(movie => (
-      <Col key={movie.imdbID}>
-        <div 
-          className="h-100" 
-          onClick={() => onMovieClick(movie.imdbID)} 
-          style={{ cursor: 'pointer' }}
-        > 
-          <Card className="h-100 shadow-sm">
-            <Card.Img
-              variant="top"
-              src={movie.Poster !== 'N/A' ? movie.Poster : '/placeholder-movie.png'}
-            />
-            <Card.Body>
-              <Card.Title>{movie.Title}</Card.Title>
-            </Card.Body>
-            <Card.Footer className="bg-white">
-              <div className="d-flex gap-2">
-                <Button 
-                  variant="danger" 
-                  size="sm" 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onRemove(movie.imdbID);
-                  }}
-                >
-                  Remove from Watchlist
-                </Button>
-                {onAction && (
-                  <Button 
-                    variant="success" 
-                    size="sm" 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onAction(movie.imdbID);
-                    }}
-                  >
-                    {actionText}
-                  </Button>
-                )}
-              </div>
-            </Card.Footer>
-          </Card>
-        </div>
-      </Col>
-    ))}
-  </Row>
-);
