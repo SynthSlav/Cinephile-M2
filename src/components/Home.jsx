@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-import { Form, Button, Alert, Spinner, Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import { Form, Button, Alert, Spinner, Row, Col } from "react-bootstrap";  // ✅ Import Col properly
 import MovieCard from "./MovieCard";
 import MovieCardDetail from "./MovieCardDetail";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import "./transitions.css";
+import { AnimatePresence, motion } from "framer-motion";
 import PageLoad from "./PageLoadAnimation";
+
+const MotionCol = motion.create(Col); // ✅ Use motion.create()
 
 export default function Main({
   movies,
@@ -21,9 +22,6 @@ export default function Main({
   const [isHovered, setIsHovered] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
-  const detailRef = useRef(null);
-  const listRef = useRef(null);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowResults(false);
@@ -36,7 +34,6 @@ export default function Main({
   const handleMovieClick = (id) => {
     fetchMovieDetails(id);
   };
-
 
   return (
     <div className="home-container">
@@ -80,51 +77,74 @@ export default function Main({
 
       {error && <Alert variant="danger">{error}</Alert>}
 
-      <SwitchTransition mode="out-in">
-        <CSSTransition
-          key={selectedMovie ? "detail" : "list"}
-          nodeRef={selectedMovie ? detailRef : listRef}
-          timeout={300}
-          classNames="fade"
-          unmountOnExit
-        >
+      <div style={{ overflow: "hidden", position: "relative" }}>
+        <AnimatePresence mode="wait">
           {selectedMovie ? (
-            <div ref={detailRef} className="container mt-4">
+            <motion.div
+              key="detail"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="container mt-4"
+            >
               <MovieCardDetail
                 movie={selectedMovie}
                 onBack={onBackToList}
                 detailLoading={detailLoading}
               />
-            </div>
+            </motion.div>
           ) : (
-            <div ref={listRef} className="px-3">
-              <CSSTransition
-                in={showResults && movies.length > 0}
-                timeout={300}
-                classNames="fade"
-                appear
-                unmountOnExit
-                nodeRef={listRef}
-              >
-                <Row xs={1} md={2} lg={3} xl={4} className="g-4 pb-4">
-                  {movies.map((movie) => (
-                    <Col
-                      key={movie.imdbID}
-                      className="d-flex justify-content-center mx-auto"
-                    >
-                      <MovieCard
-                        movie={movie}
-                        onClick={() => handleMovieClick(movie.imdbID)}
-                        onAddToWatchlist={onAddToWatchlist}
-                      />
-                    </Col>
-                  ))}
-                </Row>
-              </CSSTransition>
-            </div>
+            <motion.div
+              key="list"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="px-3"
+            >
+              {showResults && movies.length > 0 && (
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    visible: {
+                      transition: { staggerChildren: 0.1 }
+                    }
+                  }}
+                >
+                  <Row xs={1} md={2} lg={3} xl={4} className="g-4 pb-4">
+                    {movies.map((movie) => (
+                      <MotionCol
+                        key={movie.imdbID}
+                        className="d-flex justify-content-center mx-auto"
+                        variants={{
+                          hidden: { opacity: 0, y: 30, scale: 0.9 },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            transition: { type: "spring", stiffness: 300, damping: 20 }
+                          }
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <MovieCard
+                          movie={movie}
+                          onClick={() => handleMovieClick(movie.imdbID)}
+                          onAddToWatchlist={onAddToWatchlist}
+                        />
+                      </MotionCol>
+                    ))}
+                  </Row>
+                </motion.div>
+              )}
+            </motion.div>
           )}
-        </CSSTransition>
-      </SwitchTransition>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
