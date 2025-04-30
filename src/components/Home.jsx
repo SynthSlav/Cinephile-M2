@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { Form, Button, Alert, Spinner, Row, Col } from "react-bootstrap";  // ✅ Import Col properly
+import { Form, Button, Alert, Spinner, Row, Col } from "react-bootstrap";
 import MovieCard from "./MovieCard";
 import MovieCardDetail from "./MovieCardDetail";
 import { AnimatePresence, motion } from "framer-motion";
-import PageLoad from "./PageLoadAnimation";
 
-const MotionCol = motion.create(Col); // ✅ Use motion.create()
+const MotionCol = motion.create(Col);
 
 export default function Main({
   movies,
@@ -19,7 +18,6 @@ export default function Main({
   onAddToWatchlist
 }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [isHovered, setIsHovered] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
   const handleSubmit = (e) => {
@@ -57,9 +55,7 @@ export default function Main({
               <Button
                 type="submit"
                 disabled={loading || !searchTerm.trim()}
-                className={`w-100 search-button ${isHovered ? "hover" : ""}`}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                className={`w-100 search-button`}
               >
                 {loading ? (
                   <>
@@ -101,7 +97,6 @@ export default function Main({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="px-3"
             >
               {showResults && movies.length > 0 && (
                 <motion.div
@@ -112,6 +107,7 @@ export default function Main({
                       transition: { staggerChildren: 0.1 }
                     }
                   }}
+                  style={{ paddingLeft: "1rem", paddingRight: "1rem" }}
                 >
                   <Row xs={1} md={2} lg={3} xl={4} className="g-4 pb-4">
                     {movies.map((movie) => (
@@ -127,8 +123,7 @@ export default function Main({
                             transition: { type: "spring", stiffness: 300, damping: 20 }
                           }
                         }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.03, originY: 0 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         <MovieCard

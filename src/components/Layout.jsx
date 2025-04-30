@@ -1,19 +1,50 @@
-import {Outlet, Link} from "react-router-dom";
-import { Stack, Navbar, Container, Nav, NavLink } from "react-bootstrap";
-import NavLinkStyle from "./NavLinkStyle";
+import React, { useState, useEffect } from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { Stack, Navbar, Container, Nav } from 'react-bootstrap';
+import NavLinkStyle from './NavLinkStyle';
+import { FaMoon, FaSun } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 export default function Layout() {
-    // This component serves as the layout for the application, providing a consistent navigation bar across different pages.
-    // It uses React Router's Outlet to render the child components based on the current route.
+  const [theme, setTheme] = useState('dark');
+  const [themeToggle, setThemeToggle] = useState(false);
 
+  const toggleTheme = () => {
+    setThemeToggle(!themeToggle);
+    setTimeout(() => {
+      setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
+    }, 300);
+  };
 
-    return(
-        <Stack className="mt-3">
-        <Navbar expand="lg" sticky="top" className="py-0 container-fluid navbar-container">
-        <Container>
-          <Navbar.Brand as={Link} to="/">CinePhile</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const iconVariants = {
+    initial: { rotateY: 0 },
+    flipped: { rotateY: 180 },
+  };
+
+  return (
+    <Stack className="mt-3">
+      <Navbar expand="lg" sticky="top" className="py-0 container-fluid navbar-container">
+        <Container className="d-flex justify-content-between align-items-center">
+          <div className="d-flex align-items-center">
+            <Navbar.Brand style={{ marginLeft: "1rem"}} as={Link} to="/">CinePhile</Navbar.Brand>
+            <button onClick={toggleTheme} className="btn btn-sm ms-2 theme-toggle-button">
+              <motion.div
+                className="theme-toggle-icon"
+                variants={iconVariants}
+                animate={themeToggle ? 'flipped' : 'initial'}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                style={{ transformOrigin: 'center center' }}
+              >
+                {theme === 'dark' ? <FaSun size={30} color="#ffc107" /> : <FaMoon size={30} color="#f6f8fa" />}
+              </motion.div>
+            </button>
+          </div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" id="hamburgerButton" />
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="ms-auto">
               <NavLinkStyle as={Link} className="" to="/">Home</NavLinkStyle>
               <NavLinkStyle as={Link} className="" to="/watchlist">Watchlist</NavLinkStyle>
@@ -23,7 +54,6 @@ export default function Layout() {
         </Container>
       </Navbar>
       <Outlet />
-      </Stack>
-    )
+    </Stack>
+  );
 }
-

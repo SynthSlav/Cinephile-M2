@@ -1,10 +1,13 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { AnimatePresence, motion } from "framer-motion";
 import WatchlistSection from "./WatchlistSection";
 import MovieCardDetail from "./MovieCardDetail";
 import "./transitions.css";
-import { AnimatePresence, motion } from "framer-motion";
+
+// This component displays the user's watchlist, allowing them to view, remove, or mark movies as watched.
+// It uses Bootstrap for styling and Framer Motion for animations.
+const MotionDiv = motion.div;
 
 export default function Watchlist({
   watchlist,
@@ -17,9 +20,6 @@ export default function Watchlist({
 }) {
   const [activeTab, setActiveTab] = useState("toWatch");
 
-  // const listRef = useRef(null);
-  // const detailRef = useRef(null);
-
   const handleMovieClick = (id) => {
     fetchMovieDetails(id);
   };
@@ -30,7 +30,7 @@ export default function Watchlist({
 
       <AnimatePresence mode="wait">
         {selectedMovie ? (
-          <motion.div
+          <MotionDiv
             key={selectedMovie.imdbID}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -47,9 +47,9 @@ export default function Watchlist({
               onBack={onBackToList}
               detailLoading={detailLoading}
             />
-          </motion.div>
+          </MotionDiv>
         ) : (
-          <motion.div
+          <MotionDiv
             key="watchlist"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -58,7 +58,8 @@ export default function Watchlist({
               duration: 0.3,
               ease: [0.25, 0.1, 0.25, 1]
             }}
-            style={{ overflowX: "hidden" }}
+            className="px-3"
+            style={{ overflowX: "hidden", paddingLeft: "1rem", paddingRight: "1rem" }}
           >
             <Tabs
               activeKey={activeTab}
@@ -66,48 +67,58 @@ export default function Watchlist({
               className="mb-4 justify-content-center"
             >
               <Tab eventKey="toWatch" title={`To Watch (${watchlist.toWatch.length})`}>
-                <AnimatePresence mode="wait">
-                  {activeTab === "toWatch" && (
+                <AnimatePresence>
+                  {activeTab === "toWatch" && watchlist.toWatch.length > 0 && (
+                    <WatchlistSection
+                      movies={watchlist.toWatch}
+                      onRemove={onRemove}
+                      onAction={onMarkWatched}
+                      actionText="Mark as Watched"
+                      onMovieClick={handleMovieClick}
+                      key="toWatchList"
+                    />
+                  )}
+                  {activeTab === "toWatch" && watchlist.toWatch.length === 0 && (
                     <motion.div
-                      key="toWatch"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
+                      className="text-center mt-3"
+                      key="emptyToWatch"
                     >
-                      <WatchlistSection
-                        movies={watchlist.toWatch}
-                        onRemove={onRemove}
-                        onAction={onMarkWatched}
-                        actionText="Mark as Watched"
-                        onMovieClick={handleMovieClick}
-                      />
+                      Your "To Watch" list is empty.
                     </motion.div>
                   )}
                 </AnimatePresence>
               </Tab>
               <Tab eventKey="watched" title={`Watched (${watchlist.watched.length})`}>
-                <AnimatePresence mode="wait">
-                  {activeTab === "watched" && (
+                <AnimatePresence>
+                  {activeTab === "watched" && watchlist.watched.length > 0 && (
+                    <WatchlistSection
+                      movies={watchlist.watched}
+                      onRemove={onRemove}
+                      actionText="Remove"
+                      onMovieClick={handleMovieClick}
+                      key="watchedList"
+                    />
+                  )}
+                  {activeTab === "watched" && watchlist.watched.length === 0 && (
                     <motion.div
-                      key="watched"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
+                      className="text-center mt-3"
+                      key="emptyWatched"
                     >
-                      <WatchlistSection
-                        movies={watchlist.watched}
-                        onRemove={onRemove}
-                        actionText="Remove"
-                        onMovieClick={handleMovieClick}
-                      />
+                      Your "Watched" list is empty.
                     </motion.div>
                   )}
                 </AnimatePresence>
               </Tab>
             </Tabs>
-          </motion.div>
+          </MotionDiv>
         )}
       </AnimatePresence>
     </div>

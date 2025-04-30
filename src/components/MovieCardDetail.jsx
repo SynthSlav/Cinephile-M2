@@ -1,6 +1,8 @@
 import { Card, Button, Row, Col, Badge } from 'react-bootstrap';
 
 export default function MovieCardDetail({ movie, onBack, detailLoading }) {
+    const capitalizedType = movie.Type.charAt(0).toUpperCase() + movie.Type.slice(1);
+
     if (detailLoading) {
         return <div>Loading details</div>
     }
@@ -24,12 +26,12 @@ export default function MovieCardDetail({ movie, onBack, detailLoading }) {
                 </Col>
                 <Col md={7}>
                     <Card.Body className='p-4'>
-                        <Card.Title style={{padding: '5rem'}} as="h2">{movie.Title} <small>( {movie.Year} )</small></Card.Title>
+                        <Card.Title style={{padding: '0.5rem 1rem'}} as="h2">{movie.Title} <small>( {movie.Year} )</small></Card.Title>
 
                         <div className='mb-3'>
-                            <Badge bg="secondary" className='me-2'>Type: {movie.Type}</Badge>
-                            <Badge bg="secondary" className='me-2'>{movie.Rated}</Badge>
-                            <Badge bg="secondary">Genre {movie.Genre?.split(', ').map(genre => (
+                            <Badge bg="secondary" className='me-2'>Type: {capitalizedType}</Badge>
+                            <Badge bg="secondary" className='me-2'>Content Rating: {movie.Rated}</Badge>
+                            <Badge bg="secondary">Genre: {movie.Genre?.split(', ').map(genre => (
                                 <span key={genre} className='me-1'>{genre}</span>
                             ))}</Badge>
                         </div>
