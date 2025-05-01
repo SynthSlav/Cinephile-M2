@@ -39,13 +39,13 @@ export default function Layout() {
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                 style={{ transformOrigin: 'center center' }}
               >
-                {theme === 'dark' ? <FaSun size={30} color="#ffc107" /> : <FaMoon size={30} color="#f6f8fa" />}
+                {theme === 'dark' ? <FaSun size={21}/> : <FaMoon size={21}/>}
               </motion.div>
             </button>
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" id="hamburgerButton" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-            <Nav className="ms-auto">
+            <Nav className="ms-auto mt-3">
               <NavLinkStyle as={Link} className="" to="/">Home</NavLinkStyle>
               <NavLinkStyle as={Link} className="" to="/watchlist">Watchlist</NavLinkStyle>
               <NavLinkStyle as={Link} className="" to="/about">About</NavLinkStyle>

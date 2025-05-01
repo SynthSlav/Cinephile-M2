@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import MovieCard from "./MovieCard";
 
 const MotionCol = motion.create(Col);
-const MotionButton = motion(Button);
+const MotionButton = motion.create(Button);
 
 export default function WatchlistSection({
   movies,

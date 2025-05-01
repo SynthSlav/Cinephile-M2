@@ -64,12 +64,16 @@ body, html #root {
 
 /* Layout Styles */
 
-.navbar-container * {
+..navbar-container {
   max-width: 100%;
   background-color: var(--primary-color);
-  color: var(--secondary-color2);
   padding: 0.3rem 0;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-container .navbar-brand {
+  color: var(--secondary-color2);
+  transition: color 0.3s ease-in-out;
 }
 
 .nav-link {
@@ -79,6 +83,16 @@ body, html #root {
   font-weight: normal;
   margin: 0 0.5rem;
   border-radius: 5%;
+}
+
+/* Theme-specific icon colors */
+:root[data-theme="dark"] .theme-toggle-icon svg {
+  color: var(--secondary-color2);
+}
+
+:root[data-theme="light"] .theme-toggle-icon svg {
+  color: var(--secondary-color2);
+  fill: currentColor;
 }
 
 .nav-link.hover {
