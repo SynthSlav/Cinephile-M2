@@ -1,3 +1,4 @@
+// WatchlistSection.jsx
 import { Card, Col, Row, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import MovieCard from "./MovieCard";
@@ -18,8 +19,8 @@ export default function WatchlistSection({
       initial="hidden"
       animate="visible"
     >
-      <Row xs={1} md={2} lg={3} xl={4} className="g-4">
-        {movies.map((movie) => (
+      <Row xs={1} md={2} lg={3} xl={4} className="g-4" style={{ paddingBottom: "1rem"}}>
+        {movies?.map((movie) => (
           <MotionCol
             key={movie.imdbID}
             className="d-flex justify-content-center mx-auto"
@@ -27,6 +28,7 @@ export default function WatchlistSection({
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
             }}
+            whileHover={{ scale: 1.05, transition: { type: "spring", stiffness: 300 } }}
           >
             <MovieCard
               movie={movie}

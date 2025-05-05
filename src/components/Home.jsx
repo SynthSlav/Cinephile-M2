@@ -1,8 +1,10 @@
-import { useState } from "react";
+// Home.jsx
+import { useState, useEffect } from "react";
 import { Form, Button, Alert, Spinner, Row, Col } from "react-bootstrap";
 import MovieCard from "./MovieCard";
 import MovieCardDetail from "./MovieCardDetail";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const MotionCol = motion.create(Col);
 
@@ -15,10 +17,16 @@ export default function Main({
   fetchMovieDetails,
   detailLoading,
   onBackToList,
-  onAddToWatchlist
+  onAddToWatchlist,
+  setSelectedMovie
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [showResults, setShowResults] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setSelectedMovie(null);
+  }, [location, setSelectedMovie]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

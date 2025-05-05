@@ -39,7 +39,7 @@ export default function Layout() {
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                 style={{ transformOrigin: 'center center' }}
               >
-                {theme === 'dark' ? <FaSun size={21}/> : <FaMoon size={21}/>}
+                {theme === 'dark' ? <FaSun size={20}/> : <FaMoon size={20}/>}
               </motion.div>
             </button>
           </div>

@@ -8,7 +8,7 @@ export default function MovieCardDetail({ movie, onBack, detailLoading }) {
     }
 
     return (
-        <Card className='mb-4 shadow-md card-deets'>
+        <Card className='mb-4 shadow-md card-deets px-4 mx-4'>
             <Button
                 variant='light'
                 onClick={onBack}

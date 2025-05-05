@@ -4,7 +4,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 
 export default function About() {
   return (
-    <Container className="mt-4">
+    <Container className="mt-4 p-4">
       <Row>
         <Col md={8} className="mx-auto">
           <Card className="shadow-sm card-deets">
@@ -40,24 +40,24 @@ export default function About() {
 
               <Card.Subtitle className="mt-3 mb-2 text-muted">About the Creator</Card.Subtitle>
               <p>
-                Hi, I'm [Your Name], the creator of CinePhile. My passion for film spans a
-                wide range of genres... (continue with your passion for film as drafted earlier).
+                Hi, I'm Luka, the creator of CinePhile. My passion for film spans a
+                wide range of genres .
               </p>
 
               <Card.Subtitle className="mt-3 mb-2 text-muted">How to Use CinePhile</Card.Subtitle>
-              <ol>
+              <ul>
                 <li>Search for Movies using the search bar.</li>
                 <li>Explore Details by clicking on a movie.</li>
                 <li>Add to Watchlist on the movie details page.</li>
                 <li>View Your Watchlist on the "Watchlist" page.</li>
                 <li>Mark as Watched on your watchlist.</li>
-              </ol>
+              </ul>
 
               <Card.Subtitle className="mt-3 mb-2 text-muted">Questions, Ideas, & Contact</Card.Subtitle>
               <p>
                 CinePhile is a continuously evolving project, and your feedback is invaluable.
                 If you have any questions, ideas, or wishes, please feel free to reach out
-                at <a href="mailto:[luka.slavianin@gmail.com]" className='contact-link'>luka.slavianin@gmail.com</a>.
+                at <a href="mailto:[luka.slavianin@gmail.com]" className='contact-link'>luka.slavianin@gmail.com</a> .
               </p>
 
               <p className="mt-3">Thank you for exploring CinePhile! Happy viewing!</p>
