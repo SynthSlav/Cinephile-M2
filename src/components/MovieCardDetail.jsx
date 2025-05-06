@@ -1,8 +1,10 @@
 import { Card, Button, Row, Col, Badge } from 'react-bootstrap';
 
 export default function MovieCardDetail({ movie, onBack, detailLoading }) {
+    // Capitalizes the first letter of the movie's type
     const capitalizedType = movie.Type.charAt(0).toUpperCase() + movie.Type.slice(1);
-
+    
+    // Conditional rendering: displays a loading message while movie details are being fetched.
     if (detailLoading) {
         return <div>Loading details</div>
     }

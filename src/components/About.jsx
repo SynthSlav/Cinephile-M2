@@ -1,8 +1,10 @@
-// About.jsx
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 export default function About() {
+
+  // This component provides information about the CinePhile application, its features, and the creator.
+  // It is structured using Bootstrap components for a responsive layout.
   return (
     <Container className="mt-4 p-4">
       <Row>

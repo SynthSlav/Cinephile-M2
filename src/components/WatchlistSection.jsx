@@ -3,10 +3,12 @@ import { Card, Col, Row, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import MovieCard from "./MovieCard";
 
+// Variables to make bootstrap components motion-enabled
 const MotionCol = motion.create(Col);
 const MotionButton = motion.create(Button);
 
 export default function WatchlistSection({
+  // props
   movies,
   onRemove,
   onAction,
@@ -14,12 +16,13 @@ export default function WatchlistSection({
   onMovieClick,
 }) {
   return (
-    <motion.div
+    <motion.div 
       variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
       initial="hidden"
       animate="visible"
+      style={{ marginBottom: "1rem"}}
     >
-      <Row xs={1} md={2} lg={3} xl={4} className="g-4" style={{ paddingBottom: "1rem"}}>
+      <Row xs={1} md={2} lg={3} xl={4} className="g-4">
         {movies?.map((movie) => (
           <MotionCol
             key={movie.imdbID}

@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 const MotionDiv = motion.div;
 
 export default function Watchlist({
+  // props
   watchlist,
   onRemove,
   onMarkWatched,
@@ -19,9 +20,15 @@ export default function Watchlist({
   detailLoading,
   setSelectedMovie
 }) {
+  // State to manage the active tab
+  // and the selected movie for details
+  // and the loading state for movie details
   const [activeTab, setActiveTab] = useState("toWatch");
+  
   const location = useLocation();
-
+  // Effect to reset the selected movie when the location changes
+  // This is done to ensure that the selected movie is cleared
+  // when navigating away from the watchlist page
   useEffect(() => {
     setSelectedMovie(null);
   }, [location, setSelectedMovie]);
@@ -35,7 +42,7 @@ export default function Watchlist({
   }
 
   return (
-    <div className="watchlist-container">
+    <div className="watchlist-container" style={{ paddingBottom: "1rem"}}>
       <h2 className="mb-4">My Watchlist</h2>
 
       <AnimatePresence mode="wait">

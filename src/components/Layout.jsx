@@ -6,9 +6,13 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 export default function Layout() {
+  // State to manage the current theme ('dark' or 'light'). Defaults to 'dark'
   const [theme, setTheme] = useState('dark');
+
+  // State to control the toggle animation state for the theme switch.
   const [themeToggle, setThemeToggle] = useState(false);
 
+  // Function to toggle the theme.
   const toggleTheme = () => {
     setThemeToggle(!themeToggle);
     setTimeout(() => {
@@ -16,10 +20,13 @@ export default function Layout() {
     }, 300);
   };
 
+   // useEffect hook to apply the current theme to the document's data-theme attribute.
+  // This is how the CSS theme variables are applied.
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
+  // Framer Motion variants for the theme toggle icon animation.
   const iconVariants = {
     initial: { rotateY: 0 },
     flipped: { rotateY: 180 },

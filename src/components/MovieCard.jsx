@@ -4,10 +4,15 @@ import { motion } from 'framer-motion';
 const MotionButton = motion.create(Button);
 
 export default function MovieCard({ movie, onClick, onAddToWatchlist, children }) {
+
+  // Function to handle card click
+  // and trigger the onClick prop with the movie ID
   const handleCardClick = () => {
     onClick(movie.imdbID);
   };
-
+  
+  // Function to handle the "Add to Watchlist" button click
+  // and trigger the onAddToWatchlist prop with the movie object
   const handleAddToWatchlistClick = (e) => {
     e.stopPropagation();
     onAddToWatchlist(movie);
@@ -51,7 +56,8 @@ export default function MovieCard({ movie, onClick, onAddToWatchlist, children }
             Add to Watchlist
           </MotionButton>
         )}
-        {children}
+        {/* Render children if provided */}
+        {children}   
       </Card.Body>
     </Card>
   );

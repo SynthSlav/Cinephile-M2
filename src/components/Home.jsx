@@ -6,9 +6,11 @@ import MovieCardDetail from "./MovieCardDetail";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
+// Creates a motion-enabled Col component from React Bootstrap's Col.
 const MotionCol = motion.create(Col);
 
 export default function Main({
+  // Props passed to the component
   movies,
   loading,
   error,
@@ -20,14 +22,24 @@ export default function Main({
   onAddToWatchlist,
   setSelectedMovie
 }) {
+  // State to store the user's search term.
   const [searchTerm, setSearchTerm] = useState("");
+
+  // State to control the visibility of the search results.
   const [showResults, setShowResults] = useState(false);
+
+  // Hook to access the current URL location from React Router.
   const location = useLocation();
 
+  // useEffect hook to clear the selected movie when the route changes.
   useEffect(() => {
     setSelectedMovie(null);
   }, [location, setSelectedMovie]);
 
+  // Function to handle the form submission.
+  // It prevents the default form submission behavior, sets the showResults state to false,
+  // and then calls the onSearch function with the search term after a short delay.
+  // The delay is used to allow the UI to update before the search is executed
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowResults(false);
@@ -37,6 +49,8 @@ export default function Main({
     }, 10);
   };
 
+  // Function to handle the movie card click event.
+  // It fetches the details of the selected movie using its ID.
   const handleMovieClick = (id) => {
     fetchMovieDetails(id);
   };
