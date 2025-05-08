@@ -5,13 +5,16 @@ A modern, responsive web application for movie enthusiasts, showcasing its key f
 ## Table of Contents
 - [Overview](#overview)
 - [Wireframe](#wireframe)
-- [Color Scheme](#color-scheme)
-- [Key Features](#features)
+- [Colour Scheme](#colour-scheme)
+- [Key Features](#key-features)
+    - [Existing Features](#existing-features)
+    - [Features Left to Implement/Design Changes](#features-left-to-implementdesign-changes)
 - [Components](#components)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Future scalability](#future-scalability)
+- [Tests & Credits](#tests-credits)
 
 
 ---
@@ -19,8 +22,6 @@ A modern, responsive web application for movie enthusiasts, showcasing its key f
 
 ## Overview
 CinePhile is a responsive and user-friendly web application designed for movie lovers. The project showcases a structured and intuitive interface, providing essential tools for searching movies, viewing details, and managing personal watchlists.
-
-The application is built with modern web technologies (React, React Router, React Bootstrap, Framer Motion), to ensure dynamic interactions, appealing aesthetics, and a smooth user experience. It includes key features such as a robust search functionality, detailed movie information display, and a personalized watchlist system to enhance user engagement.
 
 This is a web development project built with a focus on usability, visual appeal, and a passion for cinema.
 
@@ -42,12 +43,12 @@ __These are the following colours used in my project__
 <br>
 <details>
 <summary><strong>Main/Dark Theme Scheme Palette</strong> (Click to open)</summary>
-<img src="/public/main-dark-theme.png" style="width:600px height:600px">
+<img src="/public/main-dark-theme.png" style="width:500px height:500px">
 </details>
 <br>
 <details>
 <summary><strong>Light Theme Scheme Palette</strong> (Click to open)</summary>
-<img src="/public/light-theme.png" style="width:600px height:600px">
+<img src="/public/light-theme.png" style="width:500px height:500px">
 </details>
 
 
@@ -138,3 +139,72 @@ __These are the following colours used in my project__
 4. __Stop the running local server__
 
     CTR + C
+
+---
+
+## Usage
+
+This section provides a brief guide on how to use the Cinephile-M2 application.
+
+1.  **Find Movies & Shows:**
+    * Go to the [Home](#key-features) page.
+    * Type the title into the search bar and press Enter.
+    * Browse the results.
+
+---
+
+2.  **See Details:**
+    * Click on any movie or show card from the search results or your [Watchlist](#key-features).
+    * View detailed information, including plot, cast, and ratings.
+    * Use the "Back to results" button to return.
+
+---
+
+3.  **Manage Your Watchlist:**
+    * **Add to Watchlist:**
+        * Perform a search on the [Home](#key-features) page.
+        * On the movie cards in the search results, click the "Add to Watchlist" button.
+
+    * **View Watchlist:**
+        * Click the "Watchlist" link in the navigation bar.
+        * You'll see two tabs: "To Watch" and "Watched".
+
+    * **"To Watch" List:**
+        * **Mark as Watched:** On the cards in the "To Watch" list, click the "Mark as Watched" button.
+        * **Remove:** On the cards in the "To Watch" list, click the "Remove from Watchlist" button.
+
+    * **"Watched" List:**
+        * **Remove:** On the cards in the "Watched" list, click the "Remove from Watchlist" button.
+
+    * **Detailed View:** Both Tab lists have the option for a detailed view upon clicking a card.
+
+---
+
+4.  **Change Theme:**
+    * Find the light/dark mode toggle icon in the navigation bar.
+    * Click it to switch between color themes.
+
+---
+
+## Future Scalability
+
+The Cinephile-M2 application has been built with scalability in mind, leveraging React and a modular component-based architecture. The following points outline potential areas for future growth and expansion:
+
+* **Backend Integration:** The current version primarily focuses on the front-end experience using data fetched from the OMDB API. Implementing a dedicated backend would enable:
+    * **User Accounts:** Persisting user data (watchlists, preferences, ratings) across sessions and devices.
+    * **Database Storage:** Storing more extensive movie and user data, potentially allowing for richer features.
+    * **Custom APIs:** Building APIs tailored to the application's specific needs, potentially improving performance and data retrieval.
+
+* **Enhanced Search and Filtering:** The existing search functionality can be expanded with advanced filters (genre, release year, rating) and sorting options, allowing users to refine their searches more effectively.
+
+* **Community Features:** Integrating user ratings, reviews, and discussion forums could foster a sense of community around the application and increase user engagement.
+
+* **Recommendation Systems:** Implementing algorithms to suggest movies and TV shows based on user viewing history and preferences could enhance discovery and user satisfaction.
+
+---
+
+## Tests & Credits
+
+## Tests & Credits
+
+For detailed information on tests and credits for this project, please refer to the [TestsAndCredits.md](TestsAndCredits.md) file.
