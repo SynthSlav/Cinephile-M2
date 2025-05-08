@@ -42,9 +42,12 @@ __These are the following colours used in my project__
 <br>
 <details>
 <summary><strong>Main/Dark Scheme Palette</strong> (Click to open)</summary>
-<img src="/main-dark-theme.png" style="width:600px height:600px">
+<img src="/public/main-dark-theme.png" style="width:600px height:600px">
 </details>
 <br>
+
+![Main/Dark Scheme Palette](/main-dark-theme.png)
+
 
 ## Key Features
 
