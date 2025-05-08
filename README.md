@@ -41,12 +41,15 @@ This is a web development project built with a focus on usability, visual appeal
 __These are the following colours used in my project__
 <br>
 <details>
-<summary><strong>Main/Dark Scheme Palette</strong> (Click to open)</summary>
+<summary><strong>Main/Dark Theme Scheme Palette</strong> (Click to open)</summary>
 <img src="/public/main-dark-theme.png" style="width:600px height:600px">
 </details>
 <br>
+<details>
+<summary><strong>Light Theme Scheme Palette</strong> (Click to open)</summary>
+<img src="/public/light-theme.png" style="width:600px height:600px">
+</details>
 
-![Main/Dark Scheme Palette](/main-dark-theme.png)
 
 
 ## Key Features
