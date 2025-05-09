@@ -63,4 +63,39 @@ This document provides details about the testing strategies employed in this pro
 ## Credits
     This is a section to provide credit to any and all contributions that were done not by me (or mutually with me).
 
-    
+---
+
+1. ### Libraries & Frameworks
+    * [React](https://react.dev/)
+    * [React Router](https://reactrouter.com/)
+    * [React Bootstrap](https://react-bootstrap.github.io/)
+    * [Framer Motion](https://www.framer.com/motion/)
+    * [Axios](https://axios-http.com/)
+    * [React Icons](https://react-icons.github.io/react-icons/react-icons/)
+    * [React Transition Group](https://reactcommunity.org/react-transition-group/)
+
+---
+
+2. ### APIs
+    * [OMDb API](https://www.omdbapi.com/)
+    * Technically React libraries used can be classed as API's aswell. Many third-party libraries that extend React's functionality. These libraries provide reusable components, functions, and tools that we can use to build our UI
+
+---
+
+3. ### Inspiration & Resources
+    * My main inspiration in tackling this project was websites like [IMDb (Internet Movie Database)](https://www.imdb.com/), [Rotten Tomatoes](https://www.rottentomatoes.com/), and not to forget [Letterboxd](https://letterboxd.com/). Although due to my fresh journey into web development this project has a lot of room to grow. A great thank you to the many online tutors that have helped me more or less with creating this project. 
+    Including one of my close friends Koche Stamboliev (linkedin profile ommited for privacy.)
+
+---
+
+4. ### Contributors
+    * Stack Overflow for the many fixes and inspirations concerning component styles, functionality, deployment and dependency usage.
+        * The API calls inspiration was from many online sources and guides on how to do the fetch functionality (including CI materials)
+        * The theme toggle functionality in the Layout.
+        * The idea to protect the API code due to API Key sweepers that exist solely to use free or unprotected keys that are freely posted in the repos.
+    * AI (Gemini/Copilot)
+        * Ln 19, 47 in App.jsx (due to not knowing back end to store the watchlist i had to rely on AI for the functionality)
+        * Deployment issues that arised when i tried to deploy to GitHub were fixed with AI assistance (blank pages, not updating).
+        * Many autocompleted or corrected lines/fixes thanks to Copilot.
+        * The scale and difficulty of this project made me lose track of some of the fixes and changes done by (Copilot mainly).
+    * Brian Fritz, the creator of OMDB Api. Many thanks to that person for providing a free API Key for many learners like myself to use on their journey.

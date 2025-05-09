@@ -217,7 +217,7 @@ export default function App() {
               <div ref={aboutRef} className="page-transition-container">
                 <SwitchTransition mode="out-in">
                   <CSSTransition
-                    key="about" // Or use location.pathname for a more dynamic key
+                    key="about"
                     nodeRef={aboutRef}
                     timeout={300}
                     classNames="fade"
