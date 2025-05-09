@@ -99,6 +99,7 @@ This document provides details about the testing strategies employed in this pro
         * Deployment issues that arised when i tried to deploy to GitHub were fixed with AI assistance (blank pages, not updating).
         * Many autocompleted or corrected lines/fixes thanks to Copilot.
         * The scale and difficulty of this project made me lose track of some of the fixes and changes done by (Copilot mainly).
+        * Assisting in writing comments on occasion (Copilot)
     * Brian Fritz, the creator of OMDB Api. Many thanks to that person for providing a free API Key for many learners like myself to use on their journey.
 
 --- 
