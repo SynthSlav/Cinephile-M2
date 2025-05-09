@@ -83,7 +83,7 @@ export default function Watchlist({
               onSelect={(t) => setActiveTab(t)}
               className="mb-4 justify-content-center"
             >
-              <Tab eventKey="toWatch" title={`To Watch (${watchlist?.toWatch?.length || 0})`}>
+              <Tab aria-label="To watch list" eventKey="toWatch" title={`To Watch (${watchlist?.toWatch?.length || 0})`}>
                 <AnimatePresence>
                   {activeTab === "toWatch" && watchlist?.toWatch?.length > 0 && (
                     <WatchlistSection
@@ -109,7 +109,7 @@ export default function Watchlist({
                   )}
                 </AnimatePresence>
               </Tab>
-              <Tab eventKey="watched" title={`Watched (${watchlist?.watched?.length || 0})`}>
+              <Tab aria-label="Watched list" eventKey="watched" title={`Watched (${watchlist?.watched?.length || 0})`}>
                 <AnimatePresence>
                   {activeTab === "watched" && watchlist?.watched?.length > 0 && (
                     <WatchlistSection

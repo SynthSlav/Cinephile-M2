@@ -53,9 +53,9 @@ export default function Layout() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" id="hamburgerButton" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="ms-auto mt-3">
-              <NavLinkStyle as={Link} className="" to="/">Home</NavLinkStyle>
-              <NavLinkStyle as={Link} className="" to="/watchlist">Watchlist</NavLinkStyle>
-              <NavLinkStyle as={Link} className="" to="/about">About</NavLinkStyle>
+              <NavLinkStyle aria-label="Go to Home page" as={Link} className="" to="/">Home</NavLinkStyle>
+              <NavLinkStyle aria-label="Go to Watchlist" as={Link} className="" to="/watchlist">Watchlist</NavLinkStyle>
+              <NavLinkStyle aria-label="Go to About page" as={Link} className="" to="/about">About</NavLinkStyle>
             </Nav>
           </Navbar.Collapse>
         </Container>
