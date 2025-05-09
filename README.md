@@ -169,9 +169,8 @@ __These are the following colours used in my project__
 ---
 
 ## Deployment
-*  The site was deployed to GitHub pages
-*  The site was deployed to GitHub pages. The steps to deploy are as follows: 
-* Due to the project being created in React, the deployment is done through the following steps:
+
+ * The site was deployed to GitHub pages. The steps to deploy are as follows: 
     1. In the CLI run: 
         * npm install gh-pages --save-dev
     2. Add homepage property to package.json: 
