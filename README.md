@@ -12,6 +12,7 @@ A modern, responsive web application for movie enthusiasts, showcasing its key f
 - [Components](#components)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
+- [Deployment](#deployment)
 - [Usage](#usage)
 - [Future scalability](#future-scalability)
 - [Tests & Credits](#tests-credits)
@@ -167,6 +168,42 @@ __These are the following colours used in my project__
 
 ---
 
+## Deployment
+*  The site was deployed to GitHub pages
+*  The site was deployed to GitHub pages. The steps to deploy are as follows: 
+* Due to the project being created in React, the deployment is done through the following steps:
+    1. In the CLI run: 
+        * npm install gh-pages --save-dev
+    2. Add homepage property to package.json: 
+        * "homepage": "http://synthslav.github.io/Cinephile-M2"
+    3. Add deploy scripts to package.json
+        * "scripts": {<br>
+    "start": "react-scripts start",<br>
+    "build": "react-scripts build",<br>
+    "test": "react-scripts test",<br>
+    "eject": "react-scripts eject",<br>
+    "predeploy": "npm run build",<br>
+    "deploy": "gh-pages -d build"<br>
+    }
+    4. Build the project: 
+        * CLI Command: npm run build
+    5. Deploy the project:
+        * CLI Command: npm run deploy
+    6. After these steps go on the GitHub Repo and:
+        * Navigate to the "Settings" tab.
+        * Click on "Pages" in the left sidebar.
+        * Under the "Source" section, change the dropdown to "Deploy from a branch".
+        * Select the "gh-pages" branch as the source.
+        * Ensure the "(root)" option is selected for the folder.
+        * Click "Save".
+    7. The live deployement should appear on the repo page in maximum 5-10 minutes (the deployment can potentially take a while).
+--- 
+    
+- The live link for the project repo: [CinePhile M2](https://github.com/SynthSlav/Cinephile-M2.git)
+- The live deployed version of the project [CinePhile M2](https://synthslav.github.io/Cinephile-M2)
+
+--- 
+
 ## Usage
 
 This section provides a brief guide on how to use the Cinephile-M2 application.
@@ -228,7 +265,6 @@ The Cinephile-M2 application has been built with scalability in mind, leveraging
 
 ---
 
-## Tests & Credits
 
 ## Tests & Credits
 
