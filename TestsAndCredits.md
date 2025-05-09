@@ -13,6 +13,7 @@ This document provides details about the testing strategies employed in this pro
     - [APIs](#apis)
     - [Inspiration & Resources](#inspiration--resources)
     - [Contributors](#contributors)
+- [Bugs](#bugs)
 
 ---
 
@@ -99,3 +100,34 @@ This document provides details about the testing strategies employed in this pro
         * Many autocompleted or corrected lines/fixes thanks to Copilot.
         * The scale and difficulty of this project made me lose track of some of the fixes and changes done by (Copilot mainly).
     * Brian Fritz, the creator of OMDB Api. Many thanks to that person for providing a free API Key for many learners like myself to use on their journey.
+
+--- 
+
+### Bugs
+
+1. ### Horizontal Scroll
+    * Upon loading the Watchlist page, there is a momentary dissapearing scroll bar on the right side (lg+ devices only). 
+    * If there are cards/movies in the toWatch/watched lists there is also a minor bug that makes the same scroll bar appear. The conditions for the visual bug are:
+        * The scroll bars appears only while cards in the watchlist are hovered (specifically during the upscale transition of the animation).
+        * It exclusively appears on the last row of cards (if there are 10 cards it will onlly appear while the last row cards are hovered).
+        This bug and the one above has strong connection to how Nav Tabs functionality works alongside the framer motion animation on hovers.
+        After excessively attempting a fix, i was unable to find the culprit of both visual bugs.
+
+---
+
+2. ### Burger Styles
+    * Burger toggle for the navbar presented a massive issue in staggering functionality, styles not applying (which led me to the usage of SVG fix in order to fix the issue).
+
+---
+
+3. ### React-Boostrap Library Styles
+    * My decision to use React-Boostrap library and the syntax/props that comes with it posed many issues when trying to override the default inbuilt styling of the elements.
+
+4. ### Frame Drops
+    * Occasionally the frames of the animation play out staggeringly bad. The issue could be related to many things (main culprits being internet connection and device performance)
+
+5. ### Color theme bug
+    * There is a line under the Nav Tabs in the Watchlist page that briefly appears everytime a color theme is changed. I havent found the solution to this bug. Originally the line is there but styling made it dissapear, with its resurfacing upon the color transition of the website.
+
+
+
