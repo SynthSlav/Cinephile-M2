@@ -59,7 +59,7 @@ This document provides details about the testing strategies employed in this pro
     Double checking for unused classes or commented code might be done to ensure file is clean.
         <div style="text-align: center;">
         <img src="/public/css-validator.png" style="width:500px height:500px display: block; margin: 0 auto;">
-        </div><br<hr>
+        </div><br>
 
 ## Credits
     This is a section to provide credit to any and all contributions that were done not by me (or mutually with me).

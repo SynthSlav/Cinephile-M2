@@ -251,6 +251,10 @@ This section provides a brief guide on how to use the Cinephile-M2 application.
 
 The Cinephile-M2 application has been built with scalability in mind, leveraging React and a modular component-based architecture. The following points outline potential areas for future growth and expansion:
 
+* **Enhanced Watchlist Functionality:** Improving the watchlist feature with visual updates:
+    * **Immediate Visual Confirmation:** Display visual feedback when a movie is added to the watchlist from the search results.
+    * **Persistent Watchlist Indicator:** Visually indicate on movie cards (in search results and the watchlist itself) that the movie has been added to the user's watchlist.
+
 * **Backend Integration:** The current version primarily focuses on the front-end experience using data fetched from the OMDB API. Implementing a dedicated backend would enable:
     * **User Accounts:** Persisting user data (watchlists, preferences, ratings) across sessions and devices.
     * **Database Storage:** Storing more extensive movie and user data, potentially allowing for richer features.
