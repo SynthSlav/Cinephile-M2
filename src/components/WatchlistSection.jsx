@@ -49,6 +49,7 @@ export default function WatchlistSection({
                   }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.1 }}
+                  aria-label={`Remove ${movie.Title} from watchlist`}
                 >
                   Remove from Watchlist
                 </MotionButton>
@@ -63,6 +64,7 @@ export default function WatchlistSection({
                     }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.1 }}
+                    aria-label={`Mark ${movie.Title} as watched`}
                   >
                     {actionText}
                   </MotionButton>

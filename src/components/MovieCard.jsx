@@ -52,6 +52,7 @@ export default function MovieCard({ movie, onClick, onAddToWatchlist, children }
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             style={{ padding: "0.6rem"}}
+            aria-label='Add to watchlist'
           >
             Add to Watchlist
           </MotionButton>

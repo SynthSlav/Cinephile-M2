@@ -78,6 +78,7 @@ export default function Main({
                 type="submit"
                 disabled={loading || !searchTerm.trim()}
                 className={`w-100 search-button`}
+                aria-label="Search for a movie/show"
               >
                 {loading ? (
                   <>

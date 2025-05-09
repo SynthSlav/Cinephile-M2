@@ -172,11 +172,11 @@ __These are the following colours used in my project__
 
  * The site was deployed to GitHub pages. The steps to deploy are as follows: 
     1. In the CLI run: 
-        * npm install gh-pages --save-dev
+        - npm install gh-pages --save-dev
     2. Add homepage property to package.json: 
-        * "homepage": "http://synthslav.github.io/Cinephile-M2"
+        - "homepage": "http://synthslav.github.io/Cinephile-M2"
     3. Add deploy scripts to package.json
-        * "scripts": {<br>
+        - "scripts": {<br>
     "start": "react-scripts start",<br>
     "build": "react-scripts build",<br>
     "test": "react-scripts test",<br>
@@ -185,16 +185,16 @@ __These are the following colours used in my project__
     "deploy": "gh-pages -d build"<br>
     }
     4. Build the project: 
-        * CLI Command: npm run build
+        - CLI Command: npm run build
     5. Deploy the project:
-        * CLI Command: npm run deploy
+        - CLI Command: npm run deploy
     6. After these steps go on the GitHub Repo and:
-        * Navigate to the "Settings" tab.
-        * Click on "Pages" in the left sidebar.
-        * Under the "Source" section, change the dropdown to "Deploy from a branch".
-        * Select the "gh-pages" branch as the source.
-        * Ensure the "(root)" option is selected for the folder.
-        * Click "Save".
+        - Navigate to the "Settings" tab.
+        - Click on "Pages" in the left sidebar.
+        - Under the "Source" section, change the dropdown to "Deploy from a branch".
+        - Select the "gh-pages" branch as the source.
+        - Ensure the "(root)" option is selected for the folder.
+        - Click "Save".
     7. The live deployement should appear on the repo page in maximum 5-10 minutes (the deployment can potentially take a while).
 --- 
     

@@ -38,7 +38,7 @@ export default function Layout() {
         <Container className="d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
             <Navbar.Brand style={{ marginLeft: "1rem"}} as={Link} to="/">CinePhile</Navbar.Brand>
-            <button onClick={toggleTheme} className="btn btn-sm ms-2 theme-toggle-button">
+            <button aria-label='Change theme color' onClick={toggleTheme} className="btn btn-sm ms-2 theme-toggle-button">
               <motion.div
                 className="theme-toggle-icon"
                 variants={iconVariants}
