@@ -4,7 +4,7 @@ A modern, responsive web application for movie enthusiasts, showcasing its key f
 
 ## Table of Contents
 - [Overview](#overview)
-- [Wireframe](#wireframe)
+- [Wireframes](#wireframes)
 - [Colour Scheme](#colour-scheme)
 - [Key Features](#key-features)
     - [Existing Features](#existing-features)
@@ -27,16 +27,41 @@ This is a web development project built with a focus on usability, visual appeal
 
 ---
 
-## Wireframe
+## Wireframes
 
 <br>
 <details>
 <summary><strong>Home Page Wireframe</strong> (Click to open)</summary>
-<img src="assets/media/wireframe.png">
+<img src="/public/home-desktop-wireframe.png">
 </details>
 <br>
 
 ---
+
+<br>
+<details>
+<summary><strong>Watchlist Page Wireframe</strong> (Click to open)</summary>
+<img src="/public/watchlist-desktop-wireframe.png">
+</details>
+<br>
+
+---
+
+<br>
+<details>
+<summary><strong>About Page Wireframe</strong> (Click to open)</summary>
+<img src="/public/about-desktop-wireframe.png">
+</details>
+<br>
+
+---
+
+<br>
+<details>
+<summary><strong>Mobile View Wireframes</strong> (Click to open)</summary>
+<img src="/public/mobile-wireframes.png">
+</details>
+<br>
 
 ## Colour Scheme
 __These are the following colours used in my project__

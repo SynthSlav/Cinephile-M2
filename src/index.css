@@ -58,10 +58,6 @@ body, html #root {
   transform: translateY(0);
 }
 
-/* * {
-  outline: 1px solid red;
-} */
-
 /* Layout Styles */
 
 .navbar-container {
